@@ -7,7 +7,7 @@ export default function Header() {
   const headerStyle = {
     display: "flex",
     alignItems: "center", // Vertically center items
-    background: "#000659",
+    background: "#000659", 
   };
 
   // Define an inline style to control the image size
