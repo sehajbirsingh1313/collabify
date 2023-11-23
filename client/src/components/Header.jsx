@@ -2,7 +2,11 @@ import React from "react";
 import logo from "../assets/Screenshot_2023-10-23_204227-removebg-preview1.png";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+
 export default function Header() {
+  const {currentUser} = useSelector(state => state.user)
   // Define a container style for the header to use Flexbox
   const headerStyle = {
     display: "flex",
@@ -78,11 +82,14 @@ export default function Header() {
               About
             </li>
           </Link>
-          <Link to="sign-in">
-            <li className="sm:inline hover:underline" style={headerItems}>
-              Sign In
-            </li>
-          </Link>
+          <Link to="/profile">
+          {currentUser ? (
+            <img className="rounded-full h-7 w-7 object-cover" src = {currentUser.avatar} alt="profile" />
+          ): (
+            <li className="sm:inline hover:underline" style={headerItems}>Sign In</li>   
+        )}
+        </Link>
+
         </ul>
       </div>
     </header>
